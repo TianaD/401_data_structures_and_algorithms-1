@@ -1,5 +1,6 @@
 namespace CodeChallenges
 {
+<<<<<<< HEAD
   public class Node
   {
     public int Value { get; set; }
@@ -22,6 +23,11 @@ namespace CodeChallenges
       Node newNode = new Node(value);
       newNode.Next = Top;
       Top = newNode;
+=======
+    public class Node
+    {
+        
+>>>>>>> 5372d16f7aa81242fa014b2e80489e021d50f1e8
     }
 
   }
@@ -29,5 +35,12 @@ namespace CodeChallenges
 public class Queue
 {
 
+<<<<<<< HEAD
 }
+=======
+    public class Queue
+    {
+
+    }
+>>>>>>> 5372d16f7aa81242fa014b2e80489e021d50f1e8
 }
