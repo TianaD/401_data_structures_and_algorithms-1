@@ -1,46 +1,131 @@
+using System.Diagnostics.Contracts;
+using System.Security.Cryptography.X509Certificates;
+
 namespace CodeChallenges
 {
-<<<<<<< HEAD
   public class Node
   {
     public int Value { get; set; }
+
     public Node Next { get; set; }
 
+    public Node(int value)
+    {
+      Value = value;
+      Next = null;
+    }
   }
+
 
   public class Stack
   {
-    //Create a Stack class that has a top property. It creates an empty Stack when instantiated
-    private Node Top { get; set; }
+
+    public Stack() { }
+    public Node Top { get; set; }
+
     public Stack(Node node)
     {
-      Top = null; //This object should be aware of a default empty value assigned to top when the stack is created.
+      Top = node;
     }
-    // push class, Arguments: value
-    public void Push( int value )
+
+    public void Push(int value)
     {
-      // adds a new node with that value to the top of the stack with an O(1) Time performance.
       Node newNode = new Node(value);
       newNode.Next = Top;
       Top = newNode;
-=======
-    public class Node
-    {
-        
->>>>>>> 5372d16f7aa81242fa014b2e80489e021d50f1e8
     }
 
+    public int Pop()
+    {
+      if (Top == null)
+      {
+        throw new Exception("Oh no! empty stack");
+      }
+      else
+      {
+        int value = Top.Value;
+        Top = Top.Next;
+        return value;
+      }
+    }
+
+    public int Peek()
+    {
+      if (Top == null)
+      {
+        throw new Exception("Oh no! empty stack");
+      }
+      else
+      {
+        return Top.Value;
+      }
+    }
+
+    public bool IsEmpty()
+    {
+      return Top == null;
+    }
   }
 
-public class Queue
-{
+  public class Queue
+  {
+    public Node Front { get; set; }
+    public Node Back { get; set; }
 
-<<<<<<< HEAD
-}
-=======
-    public class Queue
+
+
+    public Queue() { }
+    public Queue(Node node)
     {
-
+      Front = node;
+      Back = node;
     }
->>>>>>> 5372d16f7aa81242fa014b2e80489e021d50f1e8
+
+    public int Peek()
+    {
+      if (Front == null)
+      {
+        throw new InvalidOperationException("Empty");
+      }
+      return Front.Value;
+    }
+
+    public void Enqueue(int value)
+    {
+      Node newNode = new Node(value);
+
+      if (Front == null)
+      {
+        Front = newNode;
+        Back = newNode;
+        return;
+      }
+
+      Back.Next = newNode;
+      Back = newNode;
+    }
+
+    public int Dequeue()
+    {
+      if (Front == null)
+      {
+        throw new InvalidOperationException("Empty");
+      }
+      else
+      {
+        int value = Front.Value;
+        Front = Front.Next;
+        if (Front == null)
+        {
+          Back = null;
+        }
+        return value;
+      }
+    }
+
+    public bool IsEmpty()
+    {
+      return Front == null;
+    }
+  }
 }
